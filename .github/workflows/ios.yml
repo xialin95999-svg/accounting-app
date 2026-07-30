@@ -25,6 +25,9 @@ jobs:
       - name: Get dependencies
         run: flutter pub get
 
+      - name: Create iOS project
+        run: flutter create --platforms=ios .
+
       - name: Build iOS (simulator)
         run: flutter build ios --simulator --no-codesign
 
