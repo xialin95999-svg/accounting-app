@@ -72,7 +72,7 @@ class AccountManageScreen extends ConsumerWidget {
                 final api = ref.read(apiProvider);
                 await api.addAccount(controller.text);
                 ref.invalidate(accountsProvider);
-                if (mounted) Navigator.pop(ctx);
+                if (ctx.mounted) Navigator.pop(ctx);
               } catch (e) {
                 if (context.mounted) ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(content: Text('添加失败: $e'), backgroundColor: Colors.red),

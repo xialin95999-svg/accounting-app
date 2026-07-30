@@ -179,7 +179,7 @@ class MineScreen extends ConsumerWidget {
               try {
                 // 先读取文件内容
                 final filePath = controller.text.trim();
-                final fileContent = await _readFile(filePath);
+                final fileContent = await _readFile(filePath, ref);
                 // 调用导入API
                 final api = ref.read(apiProvider);
                 final result = await api.importQianjiCsv(fileContent);
@@ -208,7 +208,7 @@ class MineScreen extends ConsumerWidget {
     );
   }
 
-  Future<String> _readFile(String path) async {
+  Future<String> _readFile(String path, WidgetRef ref) async {
     // 通过后端代理读取文件
     final uri = Uri.parse('${ref.read(apiProvider).baseUrl}/api/file/read').replace(
       queryParameters: {'path': path},

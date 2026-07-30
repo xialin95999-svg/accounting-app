@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace "com.example.accounting_app"
-    compileSdk 34
+    compileSdk flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
 
     compileOptions {
@@ -18,14 +18,10 @@ android {
         jvmTarget = '1.8'
     }
 
-    sourceSets {
-        main.java.srcDirs += 'src/main/kotlin'
-    }
-
     defaultConfig {
         applicationId "com.example.accounting_app"
-        minSdk 21
-        targetSdk 34
+        minSdk flutter.minSdkVersion
+        targetSdk flutter.targetSdkVersion
         versionCode flutter.versionCode
         versionName flutter.versionName
         multiDexEnabled true
@@ -43,5 +39,3 @@ android {
 flutter {
     source '../..'
 }
-
-dependencies {}

@@ -208,20 +208,18 @@ class _DailyChart extends StatelessWidget {
                 gridData: const FlGridData(show: false),
                 borderData: FlBorderData(show: false),
                 titlesData: FlTitlesData(
-                  left: const FlTitlesData(show: false),
-                  right: const FlTitlesData(show: false),
-                  top: const FlTitlesData(show: false),
-                  bottom: FlTitlesData(
-                    bottomTitles: AxisTitles(
-                      sideTitles: SideTitles(
-                        showTitles: true,
-                        getTitlesWidget: (val, _) {
-                          if (val.toInt() >= daily.length) return const Text('');
-                          final day = daily[val.toInt()]['day'].toString();
-                          return Text(day.substring(5), style: const TextStyle(fontSize: 10, color: Colors.grey));
-                        },
-                        reservedSize: 22,
-                      ),
+                  leftTitles: const AxisTitles(sideTitles: SideTitles(show: false)),
+                  rightTitles: const AxisTitles(sideTitles: SideTitles(show: false)),
+                  topTitles: const AxisTitles(sideTitles: SideTitles(show: false)),
+                  bottomTitles: AxisTitles(
+                    sideTitles: SideTitles(
+                      showTitles: true,
+                      getTitlesWidget: (val, _) {
+                        if (val.toInt() >= daily.length) return const Text('');
+                        final day = daily[val.toInt()]['day'].toString();
+                        return Text(day.substring(5), style: const TextStyle(fontSize: 10, color: Colors.grey));
+                      },
+                      reservedSize: 22,
                     ),
                   ),
                 ),
