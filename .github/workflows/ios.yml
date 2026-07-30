@@ -6,7 +6,6 @@ on:
 
 jobs:
   build:
-    # iOS 构建需要 macOS，GitHub Actions 免费版有 2000 分钟额度
     runs-on: macos-14
     steps:
       - uses: actions/checkout@v4
@@ -26,7 +25,13 @@ jobs:
         run: flutter pub get
 
       - name: Create iOS project
-        run: flutter create --platforms=ios .
+        # accounting-app 含连字符，flutter create . 会失败
+        # 先改名再创建，创建完再改回来
+        run: |
+          mv accounting-app accounting_app_tmp
+          flutter create --platforms=ios --org com.example --project-name accounting_app accounting_app_tmp
+          mv accounting_app_tmp accounting-app
+          ls ios/
 
       - name: Build iOS (simulator)
         run: flutter build ios --simulator --no-codesign
