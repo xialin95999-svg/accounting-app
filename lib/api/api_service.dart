@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-// TODO: 改成你NAS的IP地址
-const String BASE_URL = 'http://192.168.31.150:3848';
+// ECS 云服务器后端地址
+const String BASE_URL = 'http://116.62.117.199:3848';
 
 class ApiService {
   final String phone;
