@@ -100,7 +100,7 @@ class MineScreen extends ConsumerWidget {
             ),
             const SizedBox(height: 20),
             Text(
-              '木木记账 v1.0.0',
+              '木木记账 v1.1.0',
               style: TextStyle(fontSize: 12, color: Colors.grey[400]),
             ),
           ],
