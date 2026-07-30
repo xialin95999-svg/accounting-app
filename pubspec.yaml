@@ -1,5 +1,5 @@
 name: accounting_app
-description: 小牛记账 - 数据存在自己NAS的个人记账应用
+description: 木木记账 - 数据存在自己NAS的个人记账应用
 publish_to: 'none'
 version: 1.0.0+1
 
