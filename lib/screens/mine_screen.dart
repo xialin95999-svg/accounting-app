@@ -1,8 +1,9 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:http/http.dart' as http;
+import 'package:share_plus/share_plus.dart';
 import '../providers/auth_provider.dart';
+import '../api/api_service.dart';
 import 'category_manage_screen.dart';
 import 'account_manage_screen.dart';
 
@@ -100,7 +101,7 @@ class MineScreen extends ConsumerWidget {
             ),
             const SizedBox(height: 20),
             Text(
-              '木木记账 v1.1.0',
+              '木木记账 v2.0.0',
               style: TextStyle(fontSize: 12, color: Colors.grey[400]),
             ),
           ],
@@ -123,9 +124,11 @@ class MineScreen extends ConsumerWidget {
               try {
                 final api = ref.read(apiProvider);
                 final csv = await api.exportCsv();
+                // 用 share_plus 分享 CSV 内容
+                await Share.share(csv, subject: '木木记账账单导出');
                 if (context.mounted) {
                   ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('导出成功，请在服务器上查看CSV文件'), backgroundColor: Colors.green),
+                    const SnackBar(content: Text('导出成功，已分享CSV文件'), backgroundColor: Colors.green),
                   );
                 }
               } catch (e) {
@@ -179,7 +182,8 @@ class MineScreen extends ConsumerWidget {
               try {
                 // 先读取文件内容
                 final filePath = controller.text.trim();
-                final fileContent = await _readFile(filePath, ref);
+                final phone = ref.read(authProvider).phone ?? '';
+                final fileContent = await _readFile(filePath, phone);
                 // 调用导入API
                 final api = ref.read(apiProvider);
                 final result = await api.importQianjiCsv(fileContent);
@@ -208,12 +212,12 @@ class MineScreen extends ConsumerWidget {
     );
   }
 
-  Future<String> _readFile(String path, WidgetRef ref) async {
+  Future<String> _readFile(String path, String phone) async {
     // 通过后端代理读取文件
-    final uri = Uri.parse('${ref.read(apiProvider).baseUrl}/api/file/read').replace(
+    final uri = Uri.parse('${ApiService_BASE_URL}/api/file/read').replace(
       queryParameters: {'path': path},
     );
-    final res = await http.get(uri, headers: {'x-phone': ref.read(authProvider).phone ?? ''});
+    final res = await http.get(uri, headers: {'x-phone': phone});
     if (res.statusCode == 200) {
       return res.body;
     }
@@ -262,3 +266,4 @@ class _MenuItem extends StatelessWidget {
     );
   }
 }
+
