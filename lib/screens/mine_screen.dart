@@ -214,7 +214,7 @@ class MineScreen extends ConsumerWidget {
 
   Future<String> _readFile(String path, String phone) async {
     // 通过后端代理读取文件
-    final uri = Uri.parse('${ApiService_BASE_URL}/api/file/read').replace(
+    final uri = Uri.parse('${BASE_URL}/api/file/read').replace(
       queryParameters: {'path': path},
     );
     final res = await http.get(uri, headers: {'x-phone': phone});
