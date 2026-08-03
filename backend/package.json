@@ -1,0 +1,14 @@
+{
+  "name": "accounting-app-backend",
+  "version": "1.0.0",
+  "description": "小牛记账后端 API",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "uuid": "^11.0.5",
+    "cors": "^2.8.5"
+  }
+}

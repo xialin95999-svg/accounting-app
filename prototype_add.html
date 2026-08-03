@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>记账本 - 记一笔</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif; background: #f5f5f5; color: #333; }
+    .phone { width: 375px; height: 812px; background: #fff; position: relative; overflow: hidden; margin: 20px auto; box-shadow: 0 10px 40px rgba(0,0,0,0.15); border-radius: 40px; }
+    .status-bar { height: 44px; background: #fff; display: flex; align-items: center; justify-content: center; padding: 0 24px; font-size: 14px; font-weight: 500; border-bottom: 1px solid #eee; }
+    .status-bar .time { position: absolute; left: 24px; font-weight: 600; }
+    .status-bar .notch { width: 150px; height: 34px; background: #000; border-radius: 20px; position: absolute; top: 10px; }
+    .add-header { display: flex; align-items: center; justify-content: space-between; padding: 10px 20px; border-bottom: 1px solid #eee; }
+    .add-header .back { font-size: 24px; color: #4A90E2; cursor: pointer; }
+    .add-header .title { font-size: 17px; font-weight: 600; }
+    .add-header .save { font-size: 15px; color: #4A90E2; font-weight: 500; cursor: pointer; }
+    .amount-input-wrapper { padding: 30px 20px; text-align: center; }
+    .amount-input-wrapper .symbol { font-size: 24px; color: #999; }
+    .amount-input-wrapper .amount { font-size: 48px; font-weight: 700; border: none; background: transparent; width: 200px; text-align: center; outline: none; }
+    .type-toggle { display: flex; background: #f5f5f5; border-radius: 12px; margin: 0 20px; padding: 4px; }
+    .type-btn { flex: 1; padding: 10px; text-align: center; border-radius: 10px; font-size: 15px; font-weight: 500; color: #999; cursor: pointer; }
+    .type-btn.active.expense { background: #fff; color: #E26F56; }
+    .type-btn.active.income { background: #fff; color: #67B26F; }
+    .category-section { padding: 20px; }
+    .category-title { font-size: 13px; color: #999; margin-bottom: 12px; }
+    .category-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+    .category-item { display: flex; flex-direction: column; align-items: center; gap: 6px; cursor: pointer; }
+    .category-item .emoji { width: 48px; height: 48px; background: #f5f5f5; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 24px; }
+    .category-item .name { font-size: 11px; color: #666; }
+    .category-item.selected .emoji { background: #E3F2FD; }
+    .category-item.selected .name { color: #4A90E2; font-weight: 500; }
+    .remark-section { padding: 0 20px 20px; }
+    .remark-input { width: 100%; background: #f5f5f5; border: none; border-radius: 12px; padding: 14px; font-size: 15px; outline: none; }
+    .date-picker { display: flex; align-items: center; gap: 8px; padding: 0 20px 20px; }
+    .date-picker .icon { font-size: 18px; }
+    .date-picker .text { font-size: 14px; color: #666; }
+  </style>
+</head>
+<body>
+  <div class="phone">
+    <div class="status-bar">
+      <div class="notch"></div>
+      <span class="time">10:55</span>
+      <span>记一笔</span>
+    </div>
+    <div class="add-header">
+      <div class="back">←</div>
+      <div class="title">记一笔</div>
+      <div class="save">保存</div>
+    </div>
+    <div class="amount-input-wrapper">
+      <span class="symbol">¥</span>
+      <input class="amount" type="text" placeholder="0" value="35">
+    </div>
+    <div class="type-toggle">
+      <div class="type-btn expense active" onclick="toggleType(this, 'expense')">支出</div>
+      <div class="type-btn income" onclick="toggleType(this, 'income')">收入</div>
+    </div>
+    <div class="category-section">
+      <div class="category-title">选择分类</div>
+      <div class="category-grid">
+        <div class="category-item selected">
+          <div class="emoji">🍜</div>
+          <div class="name">餐饮</div>
+        </div>
+        <div class="category-item">
+          <div class="emoji">🚇</div>
+          <div class="name">交通</div>
+        </div>
+        <div class="category-item">
+          <div class="emoji">🛒</div>
+          <div class="name">购物</div>
+        </div>
+        <div class="category-item">
+          <div class="emoji">🎮</div>
+          <div class="name">娱乐</div>
+        </div>
+        <div class="category-item">
+          <div class="emoji">💊</div>
+          <div class="name">医疗</div>
+        </div>
+        <div class="category-item">
+          <div class="emoji">🏠</div>
+          <div class="name">住房</div>
+        </div>
+        <div class="category-item">
+          <div class="emoji">👔</div>
+          <div class="name">服饰</div>
+        </div>
+        <div class="category-item">
+          <div class="emoji">☕</div>
+          <div class="name">咖啡</div>
+        </div>
+        <div class="category-item">
+          <div class="emoji">💰</div>
+          <div class="name">工资</div>
+        </div>
+        <div class="category-item">
+          <div class="emoji">📦</div>
+          <div class="name">其他</div>
+        </div>
+      </div>
+    </div>
+    <div class="date-picker">
+      <span class="icon">📅</span>
+      <span class="text">今天 2026-07-30</span>
+    </div>
+    <div class="remark-section">
+      <input class="remark-input" type="text" placeholder="添加备注（选填）" value="午餐">
+    </div>
+  </div>
+</body>
+</html>
