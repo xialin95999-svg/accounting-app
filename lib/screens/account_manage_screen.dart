@@ -97,12 +97,20 @@ class AccountManageScreen extends ConsumerWidget {
           TextButton(
             onPressed: () async {
               Navigator.pop(ctx);
+              // Bug#F004 fix: id为空时不允许删除
+              final id = acc['id']?.toString();
+              if (id == null || id.isEmpty) {
+                if (ctx.mounted) ScaffoldMessenger.of(ctx).showSnackBar(
+                  const SnackBar(content: Text('删除失败: 账户ID异常'), backgroundColor: Colors.red),
+                );
+                return;
+              }
               try {
                 final api = ref.read(apiProvider);
-                await api.deleteAccount(acc['id']?.toString() ?? acc['name']);
+                await api.deleteAccount(id);
                 ref.invalidate(accountsProvider);
               } catch (e) {
-                if (context.mounted) ScaffoldMessenger.of(context).showSnackBar(
+                if (ctx.mounted) ScaffoldMessenger.of(ctx).showSnackBar(
                   SnackBar(content: Text('删除失败: $e'), backgroundColor: Colors.red),
                 );
               }
