@@ -89,7 +89,7 @@ class BillScreen extends ConsumerWidget {
                             PieChartData(
                               sectionsSpace: 2,
                               centerSpaceRadius: 40,
-                              sections: cats.take(6).toList().asMap().entries.map((e) {
+                              sections: cats.where((c) => (c["total"] as num) > 0).take(6).toList().asMap().entries.map((e) {
                                 final colors = [const Color(0xFF4A90E2), const Color(0xFF67B26F), const Color(0xFFE26F56), const Color(0xFFF5A623), const Color(0xFF9B59B6), const Color(0xFF1ABC9C)];
                                 return PieChartSectionData(
                                   value: (e.value['total'] as num).toDouble(),
