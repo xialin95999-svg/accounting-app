@@ -1,0 +1,322 @@
+{
+  "user": {
+    "phone": "13900000099",
+    "pin": "123456",
+    "created_at": "2026-07-31T01:49:32.477Z"
+  },
+  "categories": [
+    {
+      "name": "三餐",
+      "icon": "🍜",
+      "type": "expense"
+    },
+    {
+      "name": "饮料",
+      "icon": "☕",
+      "type": "expense"
+    },
+    {
+      "name": "零食",
+      "icon": "🍪",
+      "type": "expense"
+    },
+    {
+      "name": "水果",
+      "icon": "🍎",
+      "type": "expense"
+    },
+    {
+      "name": "买菜",
+      "icon": "🥬",
+      "type": "expense"
+    },
+    {
+      "name": "交通",
+      "icon": "🚇",
+      "type": "expense"
+    },
+    {
+      "name": "购物",
+      "icon": "🛒",
+      "type": "expense"
+    },
+    {
+      "name": "娱乐",
+      "icon": "🎮",
+      "type": "expense"
+    },
+    {
+      "name": "游戏",
+      "icon": "🎯",
+      "type": "expense"
+    },
+    {
+      "name": "学习",
+      "icon": "📚",
+      "type": "expense"
+    },
+    {
+      "name": "烟酒",
+      "icon": "🚬",
+      "type": "expense"
+    },
+    {
+      "name": "医疗",
+      "icon": "💊",
+      "type": "expense"
+    },
+    {
+      "name": "服饰",
+      "icon": "👔",
+      "type": "expense"
+    },
+    {
+      "name": "住房",
+      "icon": "🏠",
+      "type": "expense"
+    },
+    {
+      "name": "日用品",
+      "icon": "🧴",
+      "type": "expense"
+    },
+    {
+      "name": "理发",
+      "icon": "✂️",
+      "type": "expense"
+    },
+    {
+      "name": "通讯",
+      "icon": "📱",
+      "type": "expense"
+    },
+    {
+      "name": "旅行",
+      "icon": "✈️",
+      "type": "expense"
+    },
+    {
+      "name": "请客",
+      "icon": "🎁",
+      "type": "expense"
+    },
+    {
+      "name": "会员",
+      "icon": "⭐",
+      "type": "expense"
+    },
+    {
+      "name": "其他",
+      "icon": "📦",
+      "type": "expense"
+    },
+    {
+      "name": "工资",
+      "icon": "💰",
+      "type": "income"
+    },
+    {
+      "name": "奖金",
+      "icon": "🎉",
+      "type": "income"
+    },
+    {
+      "name": "收款",
+      "icon": "💵",
+      "type": "income"
+    },
+    {
+      "name": "红包",
+      "icon": "🧧",
+      "type": "income"
+    },
+    {
+      "name": "投资",
+      "icon": "📈",
+      "type": "income"
+    },
+    {
+      "name": "其他",
+      "icon": "📦",
+      "type": "income"
+    },
+    {
+      "id": "06bbda30-42d7-407b-ae71-54fa1ba28b76",
+      "name": "兼职",
+      "icon": "💼",
+      "type": "income"
+    }
+  ],
+  "accounts": [
+    {
+      "name": "现金"
+    },
+    {
+      "name": "中国邮政储蓄银行"
+    },
+    {
+      "name": "微信"
+    },
+    {
+      "name": "支付宝"
+    },
+    {
+      "name": "京东白条"
+    },
+    {
+      "name": "招商银行"
+    },
+    {
+      "name": "建设银行"
+    },
+    {
+      "id": "732f40df-b3e5-451f-a2f9-9dd0acc616eb",
+      "name": "交通银行"
+    }
+  ],
+  "records": [
+    {
+      "id": "9a7a20cc-acc5-4588-9122-91c3056e08f8",
+      "type": "expense",
+      "amount": 88,
+      "category": "三餐",
+      "sub_category": "",
+      "account": "支付宝",
+      "to_account": "",
+      "remark": "修改后午餐",
+      "tag": "",
+      "date": "2026-07-30T12:00:00",
+      "created_at": "2026-07-31T01:49:38.832Z"
+    },
+    {
+      "id": "5f0f451e-39c1-45ec-bacf-a5bda2db4da0",
+      "type": "expense",
+      "amount": -50,
+      "category": "三餐",
+      "sub_category": "",
+      "account": "",
+      "to_account": "",
+      "remark": "",
+      "tag": "",
+      "date": "2026-07-30T12:00:00",
+      "created_at": "2026-07-31T01:50:01.899Z"
+    },
+    {
+      "id": "8219efcb-5210-4402-9dbb-e5b37243c6c9",
+      "type": "expense",
+      "amount": 999999999,
+      "category": "三餐",
+      "sub_category": "",
+      "account": "",
+      "to_account": "",
+      "remark": "",
+      "tag": "",
+      "date": "2026-07-30T12:00:00",
+      "created_at": "2026-07-31T01:50:01.909Z"
+    },
+    {
+      "id": "51832f15-620f-410e-814f-313d20655f48",
+      "type": "expense",
+      "amount": 10,
+      "category": "",
+      "sub_category": "",
+      "account": "",
+      "to_account": "",
+      "remark": "",
+      "tag": "",
+      "date": "2026-07-30T12:00:00",
+      "created_at": "2026-07-31T01:50:12.353Z"
+    },
+    {
+      "id": "7158f8c9-6ea0-47ac-807d-d5618bebea97",
+      "type": "expense",
+      "amount": 99,
+      "category": "餐饮",
+      "sub_category": "",
+      "account": "",
+      "to_account": "",
+      "remark": "",
+      "tag": "",
+      "date": "2026-07-31T12:00:00",
+      "created_at": "2026-07-31T01:50:45.374Z"
+    },
+    {
+      "id": "d791eed1-b31b-49b7-a78e-1d2aee294ae0",
+      "type": "expense",
+      "amount": null,
+      "category": "三餐",
+      "sub_category": "",
+      "account": "",
+      "to_account": "",
+      "remark": "",
+      "tag": "",
+      "date": "2026-07-31T12:00:00",
+      "created_at": "2026-07-31T01:50:45.384Z"
+    },
+    {
+      "id": "19e83ad0-482c-4f43-86b4-68cbcdfb1788",
+      "type": "expense",
+      "amount": 1,
+      "category": "三餐",
+      "sub_category": "",
+      "account": "",
+      "to_account": "",
+      "remark": "",
+      "tag": "",
+      "date": "2026-07-31T12:00:00",
+      "created_at": "2026-07-31T02:14:34.591Z"
+    },
+    {
+      "id": "c6813cd4-157d-4cf4-8535-7b56d6f71480",
+      "type": "expense",
+      "amount": 38,
+      "category": "餐饮",
+      "sub_category": "",
+      "account": "",
+      "to_account": "",
+      "remark": "牛肉面",
+      "tag": "",
+      "date": "2026-07-31",
+      "created_at": "2026-07-31T03:31:43.962Z"
+    },
+    {
+      "id": "118d8adf-1777-4258-a365-fa90ce7ae8fb",
+      "type": "expense",
+      "amount": 38,
+      "category": "餐饮",
+      "sub_category": "",
+      "account": "",
+      "to_account": "",
+      "remark": "测试",
+      "tag": "",
+      "date": "2026-07-31",
+      "created_at": "2026-07-31T06:20:49.681Z"
+    },
+    {
+      "id": "93d1c316-759a-45f3-beb4-5b32cd80c909",
+      "type": "expense",
+      "amount": 100,
+      "category": "餐饮",
+      "sub_category": "",
+      "account": "",
+      "to_account": "",
+      "remark": "",
+      "tag": "",
+      "date": "2026-07-31",
+      "created_at": "2026-07-31T06:21:47.185Z"
+    },
+    {
+      "id": "6e428daf-14b7-40e5-a9be-e67da6fbd538",
+      "type": "expense",
+      "amount": 100,
+      "category": "餐饮",
+      "sub_category": "",
+      "account": "",
+      "to_account": "",
+      "remark": "",
+      "tag": "",
+      "date": "2026-07-31",
+      "created_at": "2026-07-31T06:21:56.985Z"
+    }
+  ]
+}

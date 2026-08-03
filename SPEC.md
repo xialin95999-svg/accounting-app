@@ -1,13 +1,11 @@
-# 木木记账 产品规格说明书
+# 记账App 产品规格说明书
 
 ## 1. 产品概述
 
-- **产品名称**：木木记账
-- **产品定位**：简洁、注重隐私的个人记账工具
-- **slogan**：你的数据，存在你自己的硬盘里
+- **产品名称**：小牛记账
+- **产品定位**：简洁、注重隐私的个人记账工具，数据存储在用户自有NAS
 - **目标用户**：个人用户，需要多端同步（iOS/Android）
 - **核心价值**：简单记账，数据自持，无需订阅
-- **架构确认**：走ECS方案（`http://116.62.117.199:3848`）
 
 ---
 
@@ -24,11 +22,9 @@
 - **存储路径**：`/vol1/@apphome/trim.openclaw/data/workspace/accounting-app/backend/data/<phone>.db`
 
 ### 认证
-- 手机号 + 短信验证码
-- 用户首次注册时获取验证码完成注册
-- 登录时输入手机号+验证码
-- Token 会话管理（JWT/UUID），有效期30天
-- 支持自动登录（Token有效期内）
+- 手机号 + 6位 PIN 码
+- 用户首次注册时设置 PIN
+- 登录时输入手机号+PIN
 
 ---
 
@@ -149,13 +145,9 @@
 
 ## 6. API 接口
 
-### 认证（v2.0.0 变更）
-- `POST /api/auth/send_code` - 发送短信验证码（60秒有效）
-- `POST /api/auth/verify_code` - 验证验证码（注册+登录共用）
-- `GET /api/auth/me` - 验证Token有效性（自动登录校验）
-- `DELETE /api/auth/logout` - 退出登录
-- ~~`POST /api/auth/register`~~ - 废弃（v2.0.0）
-- ~~`POST /api/auth/login`~~ - 废弃（v2.0.0）
+### 认证
+- `POST /api/auth/register` - 注册（手机号+PIN）
+- `POST /api/auth/login` - 登录（手机号+PIN）
 
 ### 账单
 - `GET /api/records` - 获取账单列表（支持分页、日期筛选）

@@ -1,0 +1,63 @@
+name: ② iOS Release（内测版）
+
+# 打 tag 触发，如 v1.0.0
+# 用于：TestFlight 内测、应用市场上架审核
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.24.5'
+          channel: 'stable'
+
+      - name: Get dependencies
+        run: flutter pub get
+
+      - name: Create iOS project
+        run: |
+          REPO_DIR="$GITHUB_WORKSPACE"
+          PARENT_DIR="$(dirname "$REPO_DIR")"
+          mv "$REPO_DIR" "$PARENT_DIR/accounting_app_tmp"
+          flutter create --platforms=ios --org com.example --project-name accounting_app "$PARENT_DIR/accounting_app_tmp"
+          mv "$PARENT_DIR/accounting_app_tmp" "$REPO_DIR"
+
+      - name: Set up code signing（待配置）
+        run: echo '需配置 APPLE_CERTIFICATE 和 APPLE_PROFILE secrets'
+
+      - name: Build iOS（模拟器/临时包）
+        run: |
+          flutter build ios --release --no-codesign
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ios-release-ipa-${{ github.ref_name }}
+          path: build/ios/iphonesimulator/Runner.app
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: mumujizhang iOS ${{ github.ref_name }}
+          body: |
+            ## mumujizhang iOS ${{ github.ref_name }}
+
+            构建时间：$(date '+%Y-%m-%d %H:%M')
+
+            **注意**：iOS 正式发布需配置 Apple 开发者证书，参考 [iOS证书配置指南](#)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

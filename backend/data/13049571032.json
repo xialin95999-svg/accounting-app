@@ -1,0 +1,264 @@
+{
+  "user": {
+    "phone": "13049571032",
+    "pin": "123456",
+    "created_at": "2026-07-30T15:19:22.631Z"
+  },
+  "categories": [
+    {
+      "name": "三餐",
+      "icon": "🍜",
+      "type": "expense"
+    },
+    {
+      "name": "饮料",
+      "icon": "☕",
+      "type": "expense"
+    },
+    {
+      "name": "零食",
+      "icon": "🍪",
+      "type": "expense"
+    },
+    {
+      "name": "水果",
+      "icon": "🍎",
+      "type": "expense"
+    },
+    {
+      "name": "买菜",
+      "icon": "🥬",
+      "type": "expense"
+    },
+    {
+      "name": "交通",
+      "icon": "🚇",
+      "type": "expense"
+    },
+    {
+      "name": "购物",
+      "icon": "🛒",
+      "type": "expense"
+    },
+    {
+      "name": "娱乐",
+      "icon": "🎮",
+      "type": "expense"
+    },
+    {
+      "name": "游戏",
+      "icon": "🎯",
+      "type": "expense"
+    },
+    {
+      "name": "学习",
+      "icon": "📚",
+      "type": "expense"
+    },
+    {
+      "name": "烟酒",
+      "icon": "🚬",
+      "type": "expense"
+    },
+    {
+      "name": "医疗",
+      "icon": "💊",
+      "type": "expense"
+    },
+    {
+      "name": "服饰",
+      "icon": "👔",
+      "type": "expense"
+    },
+    {
+      "name": "住房",
+      "icon": "🏠",
+      "type": "expense"
+    },
+    {
+      "name": "日用品",
+      "icon": "🧴",
+      "type": "expense"
+    },
+    {
+      "name": "理发",
+      "icon": "✂️",
+      "type": "expense"
+    },
+    {
+      "name": "通讯",
+      "icon": "📱",
+      "type": "expense"
+    },
+    {
+      "name": "旅行",
+      "icon": "✈️",
+      "type": "expense"
+    },
+    {
+      "name": "请客",
+      "icon": "🎁",
+      "type": "expense"
+    },
+    {
+      "name": "会员",
+      "icon": "⭐",
+      "type": "expense"
+    },
+    {
+      "name": "其他",
+      "icon": "📦",
+      "type": "expense"
+    },
+    {
+      "name": "工资",
+      "icon": "💰",
+      "type": "income"
+    },
+    {
+      "name": "奖金",
+      "icon": "🎉",
+      "type": "income"
+    },
+    {
+      "name": "收款",
+      "icon": "💵",
+      "type": "income"
+    },
+    {
+      "name": "红包",
+      "icon": "🧧",
+      "type": "income"
+    },
+    {
+      "name": "投资",
+      "icon": "📈",
+      "type": "income"
+    },
+    {
+      "name": "其他",
+      "icon": "📦",
+      "type": "income"
+    },
+    {
+      "id": "de7bdb3e-2d8e-45e5-bfcf-82b64b5d1e0f",
+      "name": "测试分类",
+      "icon": "🧪",
+      "type": "expense"
+    }
+  ],
+  "accounts": [
+    {
+      "name": "现金"
+    },
+    {
+      "name": "中国邮政储蓄银行"
+    },
+    {
+      "name": "微信"
+    },
+    {
+      "name": "支付宝"
+    },
+    {
+      "name": "京东白条"
+    },
+    {
+      "name": "招商银行"
+    },
+    {
+      "name": "建设银行"
+    }
+  ],
+  "records": [
+    {
+      "id": "a72dd25c-993e-4a60-8c5f-b50fa6db3741",
+      "type": "expense",
+      "amount": 2,
+      "category": "零食",
+      "sub_category": "",
+      "account": "",
+      "to_account": "",
+      "remark": "",
+      "tag": "",
+      "date": "2026-07-30 23:19:32",
+      "created_at": "2026-07-30T15:19:42.872Z"
+    },
+    {
+      "id": "f41c80ec-cbf2-4574-b539-ee8a96b24e90",
+      "type": "expense",
+      "amount": 100,
+      "category": "三餐",
+      "sub_category": "",
+      "account": "",
+      "to_account": "",
+      "remark": "",
+      "tag": "",
+      "date": "2026-07-30 23:19:49",
+      "created_at": "2026-07-30T15:19:54.547Z"
+    },
+    {
+      "id": "b8903d72-dea2-4663-8a98-7c804a54ffd2",
+      "type": "income",
+      "amount": 800,
+      "category": "工资",
+      "sub_category": "",
+      "account": "",
+      "to_account": "",
+      "remark": "",
+      "tag": "",
+      "date": "2026-07-30 23:19:56",
+      "created_at": "2026-07-30T15:20:01.944Z"
+    },
+    {
+      "id": "7050aa80-b87a-4ad2-859a-d2924d5797fd",
+      "amount": -10,
+      "category": "",
+      "sub_category": "",
+      "account": "",
+      "to_account": "",
+      "remark": "",
+      "tag": "",
+      "created_at": "2026-07-31T03:15:47.751Z"
+    },
+    {
+      "id": "4064e933-5c01-44cf-bc52-ef5583bb1044",
+      "type": "income",
+      "amount": 5000,
+      "category": "工资",
+      "sub_category": "",
+      "account": "银行卡",
+      "to_account": "",
+      "remark": "API测试收入",
+      "tag": "",
+      "date": "2026-07-31T09:00:00",
+      "created_at": "2026-07-31T03:15:47.788Z"
+    },
+    {
+      "id": "6e118495-2260-43fa-bbad-7d6a4e546d79",
+      "type": "expense",
+      "amount": 0,
+      "category": "三餐",
+      "sub_category": "",
+      "account": "微信",
+      "to_account": "",
+      "remark": "",
+      "tag": "",
+      "date": "2026-07-31T12:00:00",
+      "created_at": "2026-07-31T03:15:47.825Z"
+    },
+    {
+      "id": "a8b7c373-cee5-4c88-bc18-653b28a05361",
+      "type": "expense",
+      "amount": 10,
+      "category": "",
+      "sub_category": "",
+      "account": "",
+      "to_account": "",
+      "remark": "",
+      "tag": "",
+      "date": "2026-07-31T12:00:00",
+      "created_at": "2026-07-31T03:16:48.962Z"
+    }
+  ]
+}

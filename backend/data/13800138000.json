@@ -1,0 +1,221 @@
+{
+  "user": {
+    "phone": "13800138000",
+    "pin": "123456",
+    "created_at": "2026-07-30T03:12:01.915Z"
+  },
+  "categories": [
+    {
+      "name": "三餐",
+      "icon": "🍜",
+      "type": "expense"
+    },
+    {
+      "name": "饮料",
+      "icon": "☕",
+      "type": "expense"
+    },
+    {
+      "name": "零食",
+      "icon": "🍪",
+      "type": "expense"
+    },
+    {
+      "name": "水果",
+      "icon": "🍎",
+      "type": "expense"
+    },
+    {
+      "name": "买菜",
+      "icon": "🥬",
+      "type": "expense"
+    },
+    {
+      "name": "交通",
+      "icon": "🚇",
+      "type": "expense"
+    },
+    {
+      "name": "购物",
+      "icon": "🛒",
+      "type": "expense"
+    },
+    {
+      "name": "娱乐",
+      "icon": "🎮",
+      "type": "expense"
+    },
+    {
+      "name": "游戏",
+      "icon": "🎯",
+      "type": "expense"
+    },
+    {
+      "name": "学习",
+      "icon": "📚",
+      "type": "expense"
+    },
+    {
+      "name": "烟酒",
+      "icon": "🚬",
+      "type": "expense"
+    },
+    {
+      "name": "医疗",
+      "icon": "💊",
+      "type": "expense"
+    },
+    {
+      "name": "服饰",
+      "icon": "👔",
+      "type": "expense"
+    },
+    {
+      "name": "住房",
+      "icon": "🏠",
+      "type": "expense"
+    },
+    {
+      "name": "日用品",
+      "icon": "🧴",
+      "type": "expense"
+    },
+    {
+      "name": "理发",
+      "icon": "✂️",
+      "type": "expense"
+    },
+    {
+      "name": "通讯",
+      "icon": "📱",
+      "type": "expense"
+    },
+    {
+      "name": "旅行",
+      "icon": "✈️",
+      "type": "expense"
+    },
+    {
+      "name": "请客",
+      "icon": "🎁",
+      "type": "expense"
+    },
+    {
+      "name": "会员",
+      "icon": "⭐",
+      "type": "expense"
+    },
+    {
+      "name": "其他",
+      "icon": "📦",
+      "type": "expense"
+    },
+    {
+      "name": "工资",
+      "icon": "💰",
+      "type": "income"
+    },
+    {
+      "name": "奖金",
+      "icon": "🎉",
+      "type": "income"
+    },
+    {
+      "name": "收款",
+      "icon": "💵",
+      "type": "income"
+    },
+    {
+      "name": "红包",
+      "icon": "🧧",
+      "type": "income"
+    },
+    {
+      "name": "投资",
+      "icon": "📈",
+      "type": "income"
+    },
+    {
+      "name": "其他",
+      "icon": "📦",
+      "type": "income"
+    }
+  ],
+  "accounts": [
+    {
+      "name": "现金"
+    },
+    {
+      "name": "中国邮政储蓄银行"
+    },
+    {
+      "name": "微信"
+    },
+    {
+      "name": "支付宝"
+    },
+    {
+      "name": "京东白条"
+    },
+    {
+      "name": "招商银行"
+    },
+    {
+      "name": "建设银行"
+    }
+  ],
+  "records": [
+    {
+      "id": "e686e173-1190-48b2-adec-c0f7ee29a7f0",
+      "type": "expense",
+      "amount": 35,
+      "category": "三餐",
+      "sub_category": "",
+      "account": "",
+      "to_account": "",
+      "remark": "午餐",
+      "tag": "",
+      "date": "2026-07-30 12:30:00",
+      "created_at": "2026-07-30T03:12:09.356Z"
+    },
+    {
+      "id": "313090fd-1fa1-4152-8157-ac9d63e76cd6",
+      "type": "expense",
+      "amount": 16,
+      "category": "三餐",
+      "sub_category": "",
+      "account": "",
+      "to_account": "",
+      "remark": "",
+      "tag": "",
+      "date": "2025-02-28 01:05:43",
+      "created_at": "2026-07-30T03:18:19.397Z"
+    },
+    {
+      "id": "98e61c00-26b9-4558-9204-4630bdb1a3db",
+      "type": "expense",
+      "amount": 19,
+      "category": "日常生活",
+      "sub_category": "",
+      "account": "中国邮政储蓄银行",
+      "to_account": "",
+      "remark": "",
+      "tag": "",
+      "date": "2025-02-27 23:57:19",
+      "created_at": "2026-07-30T03:18:19.397Z"
+    },
+    {
+      "id": "21088d0d-6404-49ea-82c9-ad1426063b1d",
+      "type": "expense",
+      "amount": 22,
+      "category": "烟酒",
+      "sub_category": "",
+      "account": "中国邮政储蓄银行",
+      "to_account": "",
+      "remark": "",
+      "tag": "",
+      "date": "2025-02-27 22:57:00",
+      "created_at": "2026-07-30T03:18:19.397Z"
+    }
+  ]
+}

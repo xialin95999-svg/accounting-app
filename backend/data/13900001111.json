@@ -1,0 +1,171 @@
+{
+  "user": {
+    "phone": "13900001111",
+    "created_at": "2026-07-31T03:18:54.568Z"
+  },
+  "categories": [
+    {
+      "name": "三餐",
+      "icon": "🍜",
+      "type": "expense"
+    },
+    {
+      "name": "饮料",
+      "icon": "☕",
+      "type": "expense"
+    },
+    {
+      "name": "零食",
+      "icon": "🍪",
+      "type": "expense"
+    },
+    {
+      "name": "水果",
+      "icon": "🍎",
+      "type": "expense"
+    },
+    {
+      "name": "买菜",
+      "icon": "🥬",
+      "type": "expense"
+    },
+    {
+      "name": "交通",
+      "icon": "🚇",
+      "type": "expense"
+    },
+    {
+      "name": "购物",
+      "icon": "🛒",
+      "type": "expense"
+    },
+    {
+      "name": "娱乐",
+      "icon": "🎮",
+      "type": "expense"
+    },
+    {
+      "name": "游戏",
+      "icon": "🎯",
+      "type": "expense"
+    },
+    {
+      "name": "学习",
+      "icon": "📚",
+      "type": "expense"
+    },
+    {
+      "name": "烟酒",
+      "icon": "🚬",
+      "type": "expense"
+    },
+    {
+      "name": "医疗",
+      "icon": "💊",
+      "type": "expense"
+    },
+    {
+      "name": "服饰",
+      "icon": "👔",
+      "type": "expense"
+    },
+    {
+      "name": "住房",
+      "icon": "🏠",
+      "type": "expense"
+    },
+    {
+      "name": "日用品",
+      "icon": "🧴",
+      "type": "expense"
+    },
+    {
+      "name": "理发",
+      "icon": "✂️",
+      "type": "expense"
+    },
+    {
+      "name": "通讯",
+      "icon": "📱",
+      "type": "expense"
+    },
+    {
+      "name": "旅行",
+      "icon": "✈️",
+      "type": "expense"
+    },
+    {
+      "name": "请客",
+      "icon": "🎁",
+      "type": "expense"
+    },
+    {
+      "name": "会员",
+      "icon": "⭐",
+      "type": "expense"
+    },
+    {
+      "name": "其他",
+      "icon": "📦",
+      "type": "expense"
+    },
+    {
+      "name": "工资",
+      "icon": "💰",
+      "type": "income"
+    },
+    {
+      "name": "奖金",
+      "icon": "🎉",
+      "type": "income"
+    },
+    {
+      "name": "收款",
+      "icon": "💵",
+      "type": "income"
+    },
+    {
+      "name": "红包",
+      "icon": "🧧",
+      "type": "income"
+    },
+    {
+      "name": "投资",
+      "icon": "📈",
+      "type": "income"
+    },
+    {
+      "name": "其他",
+      "icon": "📦",
+      "type": "income"
+    }
+  ],
+  "accounts": [
+    {
+      "name": "现金"
+    },
+    {
+      "name": "中国邮政储蓄银行"
+    },
+    {
+      "name": "微信"
+    },
+    {
+      "name": "支付宝"
+    },
+    {
+      "name": "京东白条"
+    },
+    {
+      "name": "招商银行"
+    },
+    {
+      "name": "建设银行"
+    },
+    {
+      "id": "9bb672e6-9a43-4f7d-8a3f-abb87e97507d",
+      "name": "测试账户"
+    }
+  ],
+  "records": []
+}

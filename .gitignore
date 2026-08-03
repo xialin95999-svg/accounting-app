@@ -1,41 +1,14 @@
-# Dependencies
-node_modules/
-backend/node_modules/
-
-# Build outputs
-*.apk
-*.aab
-*.ipa
-build/
-.gradle/
-*.class
-*.dex
-
-# Data files (user data - don't commit)
-backend/data/*.json
-backend/data/.tokens.json
-
-# IDE
-.idea/
-.vscode/
-*.iml
-
-# Flutter
+.dart_tool/
 .flutter-plugins
 .flutter-plugins-dependencies
 .packages
+.pub-cache/
 .pub/
-.dart_tool/
-
-# OS
-.DS_Store
-Thumbs.db
-
-# Environment secrets
-.env
-*.env
-.env.*
-
-# Logs
-*.log
-npm-debug.log*
+build/
+android/.gradle/
+android/app/build/
+ios/Pods/
+ios/.symlinks/
+web/build/
+*.lock
+pubspec.lock

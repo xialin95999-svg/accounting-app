@@ -1,0 +1,45 @@
+name: iOS Build
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.24.5'
+          channel: 'stable'
+
+      - name: Get dependencies
+        run: flutter pub get
+
+      - name: Create iOS project
+        # GITHUB_WORKSPACE = /Users/runner/work/accounting-app/accounting-app（repo 目录）
+        # repo 名 accounting-app 含连字符，用 mv 改名绕过 flutter create 的限制
+        run: |
+          REPO_DIR="$GITHUB_WORKSPACE"
+          PARENT_DIR="$(dirname "$REPO_DIR")"
+          mv "$REPO_DIR" "$PARENT_DIR/accounting_app_tmp"
+          flutter create --platforms=ios --org com.example --project-name accounting_app "$PARENT_DIR/accounting_app_tmp"
+          mv "$PARENT_DIR/accounting_app_tmp" "$REPO_DIR"
+
+      - name: Build iOS (simulator)
+        run: flutter build ios --simulator --no-codesign
+
+      - name: Upload build
+        uses: actions/upload-artifact@v4
+        with:
+          name: ios-build
+          path: build/ios/iphonesimulator/
+          retention-days: 7
