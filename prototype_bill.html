@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>记账本 - 月账单</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif; background: #f5f5f5; color: #333; }
+    .phone { width: 375px; height: 812px; background: #fff; position: relative; overflow: hidden; margin: 20px auto; box-shadow: 0 10px 40px rgba(0,0,0,0.15); border-radius: 40px; }
+    .status-bar { height: 44px; background: #fff; display: flex; align-items: center; justify-content: center; padding: 0 24px; font-size: 14px; font-weight: 500; border-bottom: 1px solid #eee; }
+    .status-bar .time { position: absolute; left: 24px; font-weight: 600; }
+    .status-bar .notch { width: 150px; height: 34px; background: #000; border-radius: 20px; position: absolute; top: 10px; }
+    .content { padding: 0; }
+    .bill-header { padding: 20px; text-align: center; }
+    .bill-header .month-label { font-size: 14px; color: #999; }
+    .bill-header .month-value { font-size: 24px; font-weight: 700; margin-top: 4px; }
+    .bill-summary { background: linear-gradient(135deg, #67B26F, #4A90E2); border-radius: 20px; padding: 24px; color: #fff; margin: 0 20px 20px; }
+    .bill-summary .row { display: flex; justify-content: space-between; margin-top: 16px; }
+    .bill-summary .label { font-size: 13px; opacity: 0.9; }
+    .bill-summary .value { font-size: 18px; font-weight: 600; }
+    .chart-section { background: #f8f8f8; border-radius: 16px; padding: 20px; margin: 0 20px 20px; }
+    .chart-title { font-size: 14px; font-weight: 600; margin-bottom: 16px; }
+    .chart-bars { display: flex; align-items: flex-end; gap: 8px; height: 120px; }
+    .chart-bar-wrapper { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 8px; height: 100%; justify-content: flex-end; }
+    .chart-bar { width: 100%; background: #4A90E2; border-radius: 4px 4px 0 0; }
+    .chart-bar-wrapper .day { font-size: 10px; color: #999; }
+    .category-list { padding: 0 20px; }
+    .category-list-title { font-size: 14px; font-weight: 600; margin-bottom: 12px; }
+    .category-row { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid #f0f0f0; }
+    .category-row .emoji { width: 36px; height: 36px; background: #f5f5f5; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+    .category-row .info { flex: 1; }
+    .category-row .name { font-size: 14px; font-weight: 500; }
+    .category-row .percent { font-size: 12px; color: #999; margin-top: 2px; }
+    .category-row .amount { font-size: 14px; font-weight: 600; color: #E26F56; }
+    .tab-bar { height: 84px; background: #fff; border-top: 1px solid #eee; display: flex; padding-bottom: 34px; margin-top: 20px; }
+    .tab-item { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; color: #999; font-size: 10px; cursor: pointer; }
+    .tab-item.active { color: #4A90E2; }
+    .tab-item .icon { font-size: 24px; }
+  </style>
+</head>
+<body>
+  <div class="phone">
+    <div class="status-bar">
+      <div class="notch"></div>
+      <span class="time">10:55</span>
+      <span>月账单</span>
+    </div>
+    <div class="content">
+      <div class="bill-header">
+        <div class="month-label">2026年7月</div>
+        <div class="month-value">收支概况</div>
+      </div>
+      <div class="bill-summary">
+        <div class="row">
+          <div><div class="label">收入</div><div class="value">¥6,000</div></div>
+          <div><div class="label">支出</div><div class="value">¥3,150</div></div>
+        </div>
+        <div class="row" style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.2);">
+          <div class="label">结余</div>
+          <div class="value">¥2,850</div>
+        </div>
+      </div>
+      <div class="chart-section">
+        <div class="chart-title">日支出趋势</div>
+        <div class="chart-bars">
+          <div class="chart-bar-wrapper"><div class="chart-bar" style="height:30%"></div><span class="day">1</span></div>
+          <div class="chart-bar-wrapper"><div class="chart-bar" style="height:60%"></div><span class="day">5</span></div>
+          <div class="chart-bar-wrapper"><div class="chart-bar" style="height:80%"></div><span class="day">10</span></div>
+          <div class="chart-bar-wrapper"><div class="chart-bar" style="height:45%"></div><span class="day">15</span></div>
+          <div class="chart-bar-wrapper"><div class="chart-bar" style="height:90%"></div><span class="day">20</span></div>
+          <div class="chart-bar-wrapper"><div class="chart-bar" style="height:55%"></div><span class="day">25</span></div>
+          <div class="chart-bar-wrapper"><div class="chart-bar" style="height:40%"></div><span class="day">30</span></div>
+        </div>
+      </div>
+      <div class="category-list">
+        <div class="category-list-title">支出分类</div>
+        <div class="category-row">
+          <div class="emoji">🍜</div>
+          <div class="info"><div class="name">餐饮</div><div class="percent">45%</div></div>
+          <div class="amount">-1,417</div>
+        </div>
+        <div class="category-row">
+          <div class="emoji">🛒</div>
+          <div class="img"><div class="name">购物</div><div class="percent">28%</div></div>
+          <div class="amount">-882</div>
+        </div>
+        <div class="category-row">
+          <div class="emoji">🚇</div>
+          <div class="info"><div class="name">交通</div><div class="percent">15%</div></div>
+          <div class="amount">-472</div>
+        </div>
+        <div class="category-row">
+          <div class="emoji">☕</div>
+          <div class="info"><div class="name">咖啡</div><div class="percent">8%</div></div>
+          <div class="amount">-252</div>
+        </div>
+        <div class="category-row">
+          <div class="emoji">📦</div>
+          <div class="info"><div class="name">其他</div><div class="percent">4%</div></div>
+          <div class="amount">-127</div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-bar">
+      <div class="tab-item">
+        <span class="icon">🏠</span>
+        <span>首页</span>
+      </div>
+      <div class="tab-item active">
+        <span class="icon">📊</span>
+        <span>账单</span>
+      </div>
+      <div class="tab-item">
+        <span class="icon">👤</span>
+        <span>我的</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
