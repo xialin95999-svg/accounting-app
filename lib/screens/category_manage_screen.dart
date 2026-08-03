@@ -158,12 +158,20 @@ class _CategoryList extends ConsumerWidget {
           TextButton(
             onPressed: () async {
               Navigator.pop(ctx);
+              // Bug#F004 fix: id为空时不允许删除，避免误删
+              final id = cat['id']?.toString();
+              if (id == null || id.isEmpty) {
+                if (ctx.mounted) ScaffoldMessenger.of(ctx).showSnackBar(
+                  const SnackBar(content: Text('删除失败: 分类ID异常'), backgroundColor: Colors.red),
+                );
+                return;
+              }
               try {
                 final api = ref.read(apiProvider);
-                await api.deleteCategory(cat['id']?.toString() ?? cat['name']);
+                await api.deleteCategory(id);
                 ref.invalidate(categoriesProvider);
               } catch (e) {
-                if (context.mounted) ScaffoldMessenger.of(context).showSnackBar(
+                if (ctx.mounted) ScaffoldMessenger.of(ctx).showSnackBar(
                   SnackBar(content: Text('删除失败: $e'), backgroundColor: Colors.red),
                 );
               }
