@@ -58,6 +58,7 @@ class _CategoryManageScreenState extends ConsumerState<CategoryManageScreen> wit
 
   void _showAddDialog(BuildContext context) {
     final nameController = TextEditingController();
+    String selectedType = _tabController.index == 0 ? 'expense' : 'income';
     String selectedIcon = '📦';
 
     final emojis = ['🍜', '☕', '🍪', '🍎', '🥬', '🚇', '🛒', '🎮', '🎯', '📚', '🚬', '💊', '👔', '🏠', '🧴', '✂️', '📱', '✈️', '🎁', '⭐', '💰', '🎉', '💵', '🧧', '📦'];
@@ -101,8 +102,6 @@ class _CategoryManageScreenState extends ConsumerState<CategoryManageScreen> wit
             TextButton(
               onPressed: () async {
                 if (nameController.text.isEmpty) return;
-                // Bug#F005 fix: 实时读取当前tab状态
-                final selectedType = _tabController.index == 0 ? 'expense' : 'income';
                 try {
                   final api = ref.read(apiProvider);
                   await api.addCategory({'name': nameController.text, 'icon': selectedIcon, 'type': selectedType});

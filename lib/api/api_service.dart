@@ -6,17 +6,15 @@ const String BASE_URL = 'http://116.62.117.199:3848';
 
 class ApiService {
   final String phone;
-  final String? token;
   final String baseUrl;
 
-  ApiService({required this.phone, this.token, String? baseUrl})
+  ApiService({required this.phone, String? baseUrl})
       : baseUrl = baseUrl ?? BASE_URL;
 
-  Map<String, String> get _headers {
-    final h = {'Content-Type': 'application/json', 'x-phone': phone};
-    if (token != null) h['x-token'] = token!;
-    return h;
-  }
+  Map<String, String> get _headers => {
+        'Content-Type': 'application/json',
+        'x-phone': phone,
+      };
 
   // ==================== 认证 ====================
 
@@ -34,15 +32,6 @@ class ApiService {
       Uri.parse('$baseUrl/api/auth/login'),
       headers: {'Content-Type': 'application/json'},
       body: jsonEncode({'phone': phone, 'pin': pin}),
-    );
-    return _handle(res);
-  }
-
-  // Token有效性验证 (Bug#F007)
-  Future<Map> me() async {
-    final res = await http.get(
-      Uri.parse('$baseUrl/api/auth/me'),
-      headers: _headers,
     );
     return _handle(res);
   }

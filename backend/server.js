@@ -250,25 +250,13 @@ function authMiddleware(req, res, next) {
   const token = req.headers['x-token'];
   // Bug#SEC01 fix: 必须有有效token，不允许仅靠x-phone绕过认证
   if (!token) {
-    // Bug#010 fix: 根据Accept头决定返回HTML还是JSON
-    const accept = req.headers['accept'] || '';
-    if (accept.includes('text/html')) {
-      return res.status(401).type('text/html').send(
-        `<html><body><h1>401 未登录</h1><p>请重新登录</p></body></html>`
-      );
-    }
+    // Bug#010 fix: 始终返回JSON，不返回HTML
     return res.status(401).json({ error: '未登录，请重新登录' });
   }
   const info = tokenStore.get(token);
   if (!info || info.expireAt < Date.now()) {
     tokenStore.delete(token);
-    // Bug#010 fix: 根据Accept头决定返回HTML还是JSON
-    const accept = req.headers['accept'] || '';
-    if (accept.includes('text/html')) {
-      return res.status(401).type('text/html').send(
-        `<html><body><h1>401 登录已过期</h1><p>请重新登录</p></body></html>`
-      );
-    }
+    // Bug#010 fix: 始终返回JSON，不返回HTML
     return res.status(401).json({ error: '登录已过期，请重新登录' });
   }
   req.phone = info.phone;
@@ -445,7 +433,9 @@ app.get('/api/records', authMiddleware, (req, res) => {
   // - 如果已经是原始中文 "三餐"，decode后保持不变
   // - 存储端只存原始中文，前端查询时统一编码后传递
   if (category) {
-    const normalizedCategory = decodeURIComponent(category);
+    // Bug#005 fix: 双重解码，防止前端/中间件已解码一次的情况
+    const decoded = decodeURIComponent(category);
+    const normalizedCategory = decodeURIComponent(decoded);
     records = records.filter(r => (r.category || '') === normalizedCategory);
   }
 

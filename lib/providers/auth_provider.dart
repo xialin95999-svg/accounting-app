@@ -8,17 +8,15 @@ class AuthState {
   final bool isLoading;
   final String? phone;
   final String? error;
-  final String? token; // v2.0.0 token
 
-  AuthState({this.isLoggedIn = false, this.isLoading = false, this.phone, this.error, this.token});
+  AuthState({this.isLoggedIn = false, this.isLoading = false, this.phone, this.error});
 
-  AuthState copyWith({bool? isLoggedIn, bool? isLoading, String? phone, String? error, String? token}) {
+  AuthState copyWith({bool? isLoggedIn, bool? isLoading, String? phone, String? error}) {
     return AuthState(
       isLoggedIn: isLoggedIn ?? this.isLoggedIn,
       isLoading: isLoading ?? this.isLoading,
       phone: phone ?? this.phone,
       error: error,
-      token: token ?? this.token,
     );
   }
 }
@@ -31,20 +29,8 @@ class AuthNotifier extends StateNotifier<AuthState> {
   Future<void> _loadSavedPhone() async {
     final prefs = await SharedPreferences.getInstance();
     final phone = prefs.getString('phone');
-    final token = prefs.getString('token');
-    if (phone != null && token != null) {
-      // Bug#F007 fix: 启动时验证 token 有效性，不信任本地存储的登录态
-      state = state.copyWith(isLoading: true, phone: phone, token: token);
-      try {
-        final api = ApiService(phone: phone, token: token);
-        await api.me(); // 验证token有效性
-        state = state.copyWith(isLoggedIn: true, isLoading: false, phone: phone, token: token);
-      } catch (_) {
-        // token无效，清除并回到登录页
-        await prefs.remove('phone');
-        await prefs.remove('token');
-        state = AuthState();
-      }
+    if (phone != null) {
+      state = state.copyWith(isLoggedIn: true, phone: phone);
     }
   }
 
@@ -55,8 +41,7 @@ class AuthNotifier extends StateNotifier<AuthState> {
       await api.register(phone, pin);
       final prefs = await SharedPreferences.getInstance();
       await prefs.setString('phone', phone);
-      // TODO: v2.0 should store token from verifyCode response
-      state = state.copyWith(isLoggedIn: true, isLoading: false, phone: phone, token: null);
+      state = state.copyWith(isLoggedIn: true, isLoading: false, phone: phone);
     } catch (e) {
       state = state.copyWith(isLoading: false, error: e.toString());
     }
@@ -69,8 +54,7 @@ class AuthNotifier extends StateNotifier<AuthState> {
       await api.login(phone, pin);
       final prefs = await SharedPreferences.getInstance();
       await prefs.setString('phone', phone);
-      // TODO: v2.0 should store token from verifyCode response
-      state = state.copyWith(isLoggedIn: true, isLoading: false, phone: phone, token: null);
+      state = state.copyWith(isLoggedIn: true, isLoading: false, phone: phone);
     } catch (e) {
       state = state.copyWith(isLoading: false, error: e.toString());
     }
@@ -79,7 +63,6 @@ class AuthNotifier extends StateNotifier<AuthState> {
   Future<void> logout() async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.remove('phone');
-    await prefs.remove('token');
     state = AuthState();
   }
 }
@@ -88,9 +71,9 @@ final authProvider = StateNotifierProvider<AuthNotifier, AuthState>((ref) => Aut
 
 // API Provider
 final apiProvider = Provider<ApiService>((ref) {
-  final auth = ref.watch(authProvider);
-  if (auth.phone == null) throw Exception('未登录');
-  return ApiService(phone: auth.phone!, token: auth.token);
+  final phone = ref.watch(authProvider).phone;
+  if (phone == null) throw Exception('未登录');
+  return ApiService(phone: phone);
 });
 
 // 分类数据
